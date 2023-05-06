@@ -1,0 +1,100 @@
+.card_section {
+    width: 100%;
+    padding: var(--pd1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 0;
+}
+
+.card_container>h1 {
+    inline-size: 100%;
+    font-size: var(--fs3);
+    font-weight: var(--fw1);
+    margin-bottom: 2%;
+    color: #252525;
+}
+
+/* =============== card item ============= */
+.card_item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1% 0;
+    border-bottom: 1px solid #2525255e;
+}
+
+.card_item>* {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+}
+
+.card_item>:nth-child(2),
+.card_item>:nth-child(3),
+.card_item>:nth-child(4) {
+    justify-content: center;
+}
+
+.card_item>figure {
+    height: 110px;
+    gap: 10px;
+}
+
+.card_item>figure>img {
+    height: 100%;
+    object-fit: cover;
+}
+
+#card_item_size {
+    width: 98px;
+    height: 50px;
+    border: 1px solid #2525255e;
+    padding: 0 3%;
+    outline: none;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+}
+
+.card__action {
+    width: 98px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2525255e;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.card__action>button {
+    border: none;
+    background-color: transparent;
+    font-size: var(--fs2);
+    color: #E0BEA2;
+}
+
+.price-del {
+    justify-content: end;
+    gap: 30px;
+    font-weight: 700;
+}
+
+.price-del>:first-child {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.price-del>button {
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+    color: red;
+}

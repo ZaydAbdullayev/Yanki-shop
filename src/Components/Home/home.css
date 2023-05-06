@@ -1,0 +1,61 @@
+/* :root {
+    --fs6: 46px;
+    --fs2: 36px;
+    --fs3: 20px;
+    --fs4: 18px;
+    --fs5: 16px;
+    --fw1: 300;
+    --fw2: 500;
+} */
+
+.Home_page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home_intro {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.home_intro>figure {
+    width: 33.3%;
+}
+
+.home_intro>figure>img {
+    width: 100%;
+}
+
+.paragraf {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    gap: 20px;
+}
+
+.paragraf>:first-child {
+    font-size: var(--fs6);
+    font-weight: var(--fw1);
+}
+
+.paragraf>i {
+    width: 130px;
+    height: 1px;
+    background: #fff;
+}
+
+.paragraf>:last-child {
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    text-transform: uppercase;
+}

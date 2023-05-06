@@ -1,0 +1,101 @@
+.product_card {
+    position: relative;
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.product_card:hover .view_num_two {
+    display: flex;
+}
+
+.product_card>img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+
+.info {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+}
+
+.info>h3 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+    gap: 10px;
+}
+
+.info>h3 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+    gap: 10px;
+}
+
+.info>h3>:last-child {
+    color: #E0BEA2;
+}
+
+.info>span {
+    font-size: var(--fs5);
+    font-weight: 700;
+    color: #252525;
+}
+
+.product_for_whom {
+    color: #E0BEA2;
+}
+
+.product_for_whom>span {
+    font-size: var(--fs5);
+    color: #252525;
+}
+
+.product_card>button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: #E0BEA2;
+    border-radius: 0px 0px 0px 20px;
+    border: none;
+}
+
+.product_card>button:active {
+    box-shadow: rgba(93, 62, 50, 0.25) 0px 30px 60px -12px inset, rgba(143, 36, 3, 0.3) 0px 18px 36px -18px inset;
+}
+
+.view_num_two {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    display: none;
+    align-items: center;
+    font-size: var(--fs4) !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    color: #545454d2 !important;
+    gap: 7px;
+}
+
+.view_num_two>span {
+    font-size: var(--fs3);
+    display: flex;
+    align-items: center;
+}

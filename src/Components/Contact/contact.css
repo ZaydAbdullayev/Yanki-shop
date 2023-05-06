@@ -1,0 +1,60 @@
+.Contact_section {
+    width: 100%;
+    padding: 0 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.Contact_section>h1 {
+    font-size: var(--fs2);
+    font-weight: var(--fw1);
+    color: #252525;
+    margin-bottom: 2.5%;
+}
+
+.send_contact {
+    width: 43%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.send_contact>input{
+    width: 100%;
+    height: 50px;
+    border: 0.5px solid #252525;
+    text-align: center;
+    font-size: var(--fs4);
+    font-weight: var(--fw1);
+    outline: none;
+    color: #252525;
+}
+
+.send_contact>button{
+    width: 100%;
+    height: 50px;
+    background: #E0BEA2;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+}
+
+.send_contact>button:hover{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.send_contact>button:active{
+    background: #CCA88A;
+}
+
+.Contact_section>p{
+    width: 45%;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+    text-align: center;
+}

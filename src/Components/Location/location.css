@@ -1,0 +1,19 @@
+.location {
+    width: 100%;
+    padding: 2% 0 1%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.location>a{
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+    text-transform: capitalize;
+}
+
+.location>:last-child,
+.location>span {
+    color: #E0BEA2;
+}
