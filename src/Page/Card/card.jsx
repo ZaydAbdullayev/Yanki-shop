@@ -74,7 +74,11 @@ export const Card = () => {
               </figure>
               <p>{item.season || "All"}</p>
               <div>
-                <select name="size" id="card_item_size">
+                <select
+                  name="size"
+                  id="card_item_size"
+                  onClick={() => handleSize(item.size)}
+                >
                   <option value=" ">{item.size}</option>
                   <option value="XL">XXL</option>
                   <option value="XL">XL</option>
