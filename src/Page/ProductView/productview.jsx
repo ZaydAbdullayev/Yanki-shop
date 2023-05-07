@@ -5,6 +5,7 @@ import axios from "axios";
 import Location from "../../Components/Location/location";
 import { ProductCard } from "../../Components/ProductCard/productcard";
 import Loading from "../../Components/Loading/loading";
+import { useSnackbar } from "notistack";
 
 import Favorite from "../images/Izbranny.svg";
 import { AiOutlineEye } from "react-icons/ai";
@@ -15,6 +16,7 @@ export const ProductView = () => {
   const { code } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const url = `https://server.pandashop.uz/product_test?id=${code}`;
@@ -57,8 +59,12 @@ export const ProductView = () => {
 
     if (!myData.length) {
       myData.push(item);
+      const message = "Продукт был добавлен в корзину";
+      enqueueSnackbar(message, { variant: "success" });
     } else {
       const found = myData.find((i) => i.id === item.id);
+      const message = "Товар добавлен в повторный заказ";
+      enqueueSnackbar(message, { variant: "success" });
       if (!found) {
         myData.push(item);
       } else {

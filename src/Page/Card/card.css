@@ -75,6 +75,10 @@
     cursor: pointer;
 }
 
+.card__action>span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .card__action>button {
     border: none;
     background-color: transparent;
@@ -85,7 +89,8 @@
 .price-del {
     justify-content: end;
     gap: 30px;
-    font-weight: 700;
+    font-weight: 600;
+    color: #252525;
 }
 
 .price-del>:first-child {
@@ -97,4 +102,212 @@
     border: none;
     background-color: transparent;
     color: red;
+}
+
+/* ========== Total price section ========== */
+.total_price {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 3% 0;
+    gap: 10px;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+}
+
+.total_price_none {
+    display: none;
+}
+
+.total_price>:nth-child(2) {
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============ Empty card section ============ */
+.empty_card_active {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.empty_card_close {
+    display: none;
+}
+
+.empty_card_active>figure {
+    width: 50%;
+}
+
+.empty_card_active>figure>img {
+    width: 100%;
+}
+
+.animation {
+    color: #daa172;
+    animation: paragraf 1.5s infinite;
+    letter-spacing: 1px;
+}
+
+@keyframes paragraf {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+/* ============ Book product section =========== */
+.book_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.book_container_close {
+    display: none;
+}
+
+.book_container>h3 {
+    inline-size: 100%;
+    font-size: var(--fs3);
+    font-weight: var(--fw1);
+    color: #252525;
+}
+
+
+/* ========== left section for book container ========= */
+.info_left_section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.personal_info,
+.delivery_section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.personal_info>p,
+.delivery_section>p {
+    inline-size: 100%;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+}
+
+.personal_info>input {
+    width: 48%;
+    height: 50px;
+    padding: 0 2%;
+    border: 1px solid #2525255e;
+    outline: none;
+    font-size: var(--fs5);
+    color: #252525;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.delivery_item {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+}
+
+.delivery_item>label,
+.payment_section>label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* ========== right section for book container ========= */
+.info_right_section {
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info_right_section a {
+    text-decoration: underline;
+}
+
+.extra_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.extra_info>a {
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+}
+
+.extra_info>:first-child {
+    color: #daa172;
+}
+
+.buy_box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.buy_box>p {
+    inline-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--fs7);
+}
+
+.buy_box>p>span {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.buy_box>button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #e4ba98;
+    color: #fff;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+}
+
+.buy_box>button:active{
+    background: #b9a38f;
+}
+
+.buy_box>:last-child{
+    inline-size: 100%;
+    font-size: var(--fs7);
+    font-weight: var(--fw1);
+    color: #252525;
+    line-height: 1.2;
 }

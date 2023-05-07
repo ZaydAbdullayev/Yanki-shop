@@ -40,9 +40,9 @@ export function Header() {
         <a href=".">
           <img src={profile} alt="" />
         </a>
-        <a href=".">
+        <Link to="/favourite">
           <img src={favourite} alt="" />
-        </a>
+        </Link>
         <Link to="/basket">
           <img src={basket} alt="" />
         </Link>

@@ -5,6 +5,7 @@ import { Product } from "./Page/Product/product.jsx";
 import { Routes, Route } from "react-router-dom";
 import {ProductView} from "./Page/ProductView/productview";
 import { Card } from "./Page/Card/card";
+import { Favourite } from "./Page/Favourite/favourite";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/catalog" element={<Product />} />
         <Route path="/view/product/:code" element={<ProductView />} />
         <Route path="/basket" element={<Card />} />
+        <Route path="/favourite" element={<Favourite />} />
       </Routes>
       <Footer />
     </div>
