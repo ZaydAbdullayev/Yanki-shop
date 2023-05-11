@@ -87,7 +87,7 @@
 }
 
 .price-del {
-    justify-content: end;
+    justify-content: flex-end;
     gap: 30px;
     font-weight: 600;
     color: #252525;
@@ -109,7 +109,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 3% 0;
     gap: 10px;
     font-size: var(--fs5);
