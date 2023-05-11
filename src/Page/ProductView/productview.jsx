@@ -79,6 +79,23 @@ export const ProductView = () => {
     localStorage.setItem("card", JSON.stringify(myData));
   };
 
+  const addToLike = (item) => {
+    const like = JSON.parse(localStorage.getItem("like")) || [];
+    const myFavorite = [...like];
+    const found = myFavorite.find((i) => i.id === item.id);
+
+    if (!found) {
+      myFavorite.push(item);
+      const message = "Товар добавлен в избранное";
+      enqueueSnackbar(message, { variant: "success" });
+    } else {
+      const message = "Этот товар уже в избранном";
+      enqueueSnackbar(message, { variant: "info" });
+    }
+
+    localStorage.setItem("like", JSON.stringify(myFavorite));
+  };
+
   return (
     <div className="product_view">
       <Location>
@@ -136,7 +153,7 @@ export const ProductView = () => {
             >
               В КОРЗИНУ
             </button>
-            <button>
+            <button onClick={() => addToLike(product)}>
               <img src={Favorite} alt="icon" />
               <span>В ИЗБРАННОЕ</span>
             </button>
