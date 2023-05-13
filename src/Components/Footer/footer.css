@@ -14,30 +14,31 @@
     gap: 10px;
 }
 
-.footer_item>p{
+.footer_item>p {
     font-size: var(--fs3);
     font-weight: var(--fw1);
     margin-bottom: 5%;
 }
 
-.footer_item>a{
+.footer_item>a {
     font-size: var(--fs5);
     font-weight: var(--fw1);
     color: #252525;
     transition: all 0.05s ease-in-out;
 }
 
-.footer_item>a:hover{
+.footer_item>a:hover {
+    transform: scale(1.03);
     border-bottom: 2px solid #aa5b5ba8;
 }
 
-.sosyal{
+.sosyal {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.sosyal>a:hover{
+.sosyal>a:hover {
     transform: scale(1.1);
 }
 

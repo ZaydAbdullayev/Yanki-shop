@@ -1,0 +1,54 @@
+.contact_page {
+    padding: var(--pd1);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact_info_box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8%;
+}
+
+.contact_info_item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sosyal_media {
+    display: flex;
+    gap: 20px;
+}
+
+.sosyal_media>a {
+    width: 25px;
+    height: 25px;
+}
+
+.sosyal_media>a:hover,
+.contact_info_item>a:hover {
+    transform: scale(1.1);
+    text-shadow: 0px 10px 2px #00000028;
+}
+
+.sosyal_media>a>img {
+    width: 100%;
+}
+
+.contact_info_item>:first-child {
+    font-weight: var(--fw1);
+}
+
+.contact_info_item>a,
+.contact_info_item>:first-child {
+    font-size: var(--fs5);
+    color: #252525;
+}
+
+.contact_info_item>a {
+    font-weight: var(--fw3);
+    font-family: Segoe UI;
+}

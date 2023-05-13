@@ -9,6 +9,7 @@
     --fs7: 14px;
     --fw1: 300;
     --fw2: 500;
+    --fw3: 200;
     --pd1: 1.5% 11%;
 }
 
@@ -17,10 +18,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Raleway;
-    letter-spacing: 0.03rem;
+    letter-spacing: 0.03rem
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -41,7 +42,13 @@ a {
     text-decoration: none;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
+@media(max-width:1250px) {
+    :root {
+        --pd1: 1.5% 9.5%;
+        --fs6: 44px
+    }
+}

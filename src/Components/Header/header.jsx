@@ -10,6 +10,14 @@ import basket from "../Images/basket.svg";
 
 export function Header() {
   const location = useLocation().pathname;
+  const [search, setSearch] = React.useState(false);
+
+  const handleBlur = (e) => {
+    const input = document.querySelector(".input");
+    setSearch(false);
+    input.value = "";
+  };
+
   return (
     <nav className={location === "/" ? "header_home" : "header_other"}>
       <div className="left_header">
@@ -33,13 +41,31 @@ export function Header() {
           <option value="uz">FU</option>
         </select>
         <form className="action">
-          <button type="button">
+          <input
+            type="search"
+            name="search"
+            className="input"
+            required
+            placeholder="Введите ваш запрос"
+            style={
+              search
+                ? { transition: "all 0.05s ease-in-out !important" }
+                : {
+                    display: "none",
+                    transform: "translateY:-100%",
+                    width: "0px",
+                  }
+            }
+            onBlur={handleBlur}
+            autoFocus
+          />
+          <button type="button" onClick={() => setSearch(true)}>
             <img src={search_image} alt="" />
           </button>
         </form>
-        <a href=".">
+        <Link to={"./contact"}>
           <img src={profile} alt="" />
-        </a>
+        </Link>
         <Link to="/favourite">
           <img src={favourite} alt="" />
         </Link>

@@ -89,6 +89,28 @@
     margin-right: 50px;
 }
 
+.action {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.action>input {
+    position: absolute;
+    top: -7px;
+    right: -20px;
+    width: 280px;
+    height: 40px;
+    padding: 0 70%;
+    background: #fff;
+    border: 1px solid #757070;
+    border-radius: 25px;
+    outline: none;
+    font-size: var(--fs5);
+    font-weight: var(--fw1);
+    color: #252525;
+}
+
 .action>button {
     border: none;
     background: none;
@@ -97,4 +119,14 @@
 .action>button:hover,
 .right_header>a:hover {
     transform: scale(1.1);
+}
+
+@media(max-width: 1250px) {
+    .left_header>button {
+        margin-right: 80px;
+    }
+
+    .right_header>:nth-child(2) {
+        margin-right: 40px;
+    }
 }

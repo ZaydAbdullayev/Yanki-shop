@@ -1,5 +1,6 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 import instagram from "../Images/instagram.svg";
 import twitter from "../Images/twitter.svg";
@@ -9,8 +10,8 @@ function Footer() {
     <footer className="Footer">
       <div className="footer_item">
         <p>КОМПАНИЯ</p>
-        <a href=".">О нас</a>
-        <a href=".">Контакты</a>
+        <Link to={"./about"}>O нас</Link>
+        <Link to={"./contact"}>Контакты</Link>
       </div>
       <div className="footer_item">
         <p>ПОЛЕЗНОЕ</p>
@@ -20,7 +21,7 @@ function Footer() {
       </div>
       <div className="footer_item">
         <p>ПОКУПАТЕЛЮ</p>
-        <a href=".">Избранное</a>
+        <Link to={"/favourite"}>Избранное</Link>
         <a href=".">Публичная оферта</a>
         <a href=".">Политика конфиденциальности</a>
       </div>
@@ -42,4 +43,4 @@ function Footer() {
   );
 }
 
-export default memo(Footer)
+export default memo(Footer);

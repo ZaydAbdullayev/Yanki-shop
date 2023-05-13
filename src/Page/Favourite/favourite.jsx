@@ -8,8 +8,9 @@ import Empty from "./empty-cart.gif";
 
 export const Favourite = () => {
   const like = JSON.parse(localStorage.getItem("like")) || [];
-  const data =[...like]
-  
+  const data = [...like];
+  window.scrollTo(0, 0);
+
   console.log();
 
   return (
@@ -22,7 +23,9 @@ export const Favourite = () => {
 
       <h3>Избранное</h3>
 
-      <div className={like.length ? "favourite_container" : "close_favorite_box"}>
+      <div
+        className={like.length ? "favourite_container" : "close_favorite_box"}
+      >
         <ProductCard data={data} />
       </div>
 

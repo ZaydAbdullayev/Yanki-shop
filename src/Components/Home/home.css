@@ -1,13 +1,3 @@
-/* :root {
-    --fs6: 46px;
-    --fs2: 36px;
-    --fs3: 20px;
-    --fs4: 18px;
-    --fs5: 16px;
-    --fw1: 300;
-    --fw2: 500;
-} */
-
 .Home_page {
     width: 100%;
     display: flex;
@@ -59,3 +49,6 @@
     font-weight: var(--fw1);
     text-transform: uppercase;
 }
+
+
+
