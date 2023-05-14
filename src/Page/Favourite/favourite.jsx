@@ -9,7 +9,6 @@ import Empty from "./empty-cart.gif";
 export const Favourite = () => {
   const like = JSON.parse(localStorage.getItem("like")) || [];
   const data = [...like];
-  window.scrollTo(0, 0);
 
   console.log();
 

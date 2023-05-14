@@ -6,7 +6,9 @@ import { ProductCard } from "../../Components/ProductCard/productcard";
 import axios from "axios";
 import Loading from "../../Components/Loading/loading";
 
-export function Product() {
+import toTop from "./back-to-top.svg";
+
+export function Product({ search }) {
   const query = useLocation().search.split("=")[1];
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,18 +19,33 @@ export function Product() {
 
   useEffect(() => {
     const url = "https://server.pandashop.uz/product_test";
-    setLoading(true)
+    setLoading(true);
 
     axios(url)
       .then((res) => {
-        setData(res.data.slice(280, 340));
+        setData(res.data.slice(200, 380));
       })
       .catch((err) => {
         console.log(err);
-      }).finally(() => {
-        setLoading(false)
       })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
+
+  const result = data.filter((item) => {
+    if (!search) {
+      return item;
+    }
+    return (
+      item?.name?.toLowerCase().includes(search?.toLowerCase()) ||
+      item?.for_whom?.toLowerCase().includes(search?.toLowerCase())
+    );
+  });
+
+  const ScrollTo = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="Product_page">
@@ -39,6 +56,8 @@ export function Product() {
           {" "}
           {query ? query : "Каталог"}{" "}
         </Link>
+        <span>{">"}</span>
+        {search}
       </Location>
 
       <div className="product_container">
@@ -54,8 +73,11 @@ export function Product() {
           })}
         </div>
         <div className="product_body">
-          <ProductCard data={data} />
+          <ProductCard data={result} />
         </div>
+        <button type="button" className="scroll" onClick={() => ScrollTo()}>
+          <img src={toTop} alt="" />
+        </button>
       </div>
 
       <Loading status={loading} />

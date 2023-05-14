@@ -8,8 +8,6 @@ import Inst from "./instagram.svg";
 import tlgrm from "./telegram.svg";
 
 export const ContactPage = () => {
-  window.scrollTo(0, 0);
-
   return (
     <div className="contact_page">
       <Location>

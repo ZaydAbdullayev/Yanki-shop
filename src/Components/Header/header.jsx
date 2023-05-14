@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-import { NavLink, useLocation, Link } from "react-router-dom";
+import { NavLink, useLocation, Link, useNavigate } from "react-router-dom";
 
 import menu_icon from "../Images/menu.svg";
 import search_image from "../Images/search.svg";
@@ -8,9 +8,14 @@ import profile from "../Images/profile.svg";
 import favourite from "../Images/favourite.svg";
 import basket from "../Images/basket.svg";
 
-export function Header() {
+export function Header({ search, setSearch }) {
   const location = useLocation().pathname;
-  const [search, setSearch] = React.useState(false);
+  const navigate = useNavigate();
+
+  const handlesearch = (e) => {
+    setSearch("");
+    navigate("/catalog");
+  };
 
   const handleBlur = (e) => {
     const input = document.querySelector(".input");
@@ -46,10 +51,10 @@ export function Header() {
             name="search"
             className="input"
             required
-            placeholder="Введите ваш запрос"
+            placeholder="Введите ваш запрос ?"
             style={
-              search
-                ? { transition: "all 0.05s ease-in-out !important" }
+              search || search?.length <= 0 
+                ? {}
                 : {
                     display: "none",
                     transform: "translateY:-100%",
@@ -57,9 +62,10 @@ export function Header() {
                   }
             }
             onBlur={handleBlur}
+            onChange={(e) => setSearch(e.target.value)}
             autoFocus
           />
-          <button type="button" onClick={() => setSearch(true)}>
+          <button type="button" onClick={handlesearch}>
             <img src={search_image} alt="" />
           </button>
         </form>
