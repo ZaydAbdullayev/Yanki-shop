@@ -52,9 +52,14 @@ export const ProductView = () => {
   }, [product]);
 
   const addToCard = (item) => {
+    const size = document.querySelector("#product__size");
     dispatch(acAddCard(item));
     const msg = " Этот товар добавление в карзинку";
     enqueueSnackbar(msg, { variant: "success" });
+
+    if (!item.size) {
+      item.size = size.value;
+    }
   };
 
   const addToLike = (item) => {
