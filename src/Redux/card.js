@@ -37,7 +37,7 @@ export const reCard = (state = card, action) => {
         if (item?.id === action?.payload) {
           return {
             ...item,
-            count: item?.count - 1,
+            count: item.count > 0 ? item?.count - 1 : 0,
           };
         } else {
           return item;

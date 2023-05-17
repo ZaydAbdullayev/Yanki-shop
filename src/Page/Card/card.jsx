@@ -33,6 +33,10 @@ export const Card = () => {
 
   const handleDec = (id) => {
     dispatch(acDecrementItem(id));
+    if (id.count <= 0) {
+      id.count = 0;
+      return id;
+    }
   };
 
   useEffect(() => {
