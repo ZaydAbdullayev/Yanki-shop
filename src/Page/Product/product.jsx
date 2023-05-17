@@ -18,8 +18,8 @@ export function Product({ search }) {
   }, [query]);
 
   useEffect(() => {
-    const url = "https://server.pandashop.uz/product_test";
     setLoading(true);
+    const url = "https://server.pandashop.uz/product_test";
 
     axios(url)
       .then((res) => {

@@ -4,7 +4,7 @@ import App from "./App";
 import "./Global.css";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
-import { store } from "./Redux/Storage";
+import { store} from "./Redux/Storage"
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

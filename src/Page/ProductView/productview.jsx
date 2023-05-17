@@ -6,6 +6,8 @@ import Location from "../../Components/Location/location";
 import { ProductCard } from "../../Components/ProductCard/productcard";
 import Loading from "../../Components/Loading/loading";
 import { useSnackbar } from "notistack";
+import { useDispatch } from "react-redux";
+import { acAddCard } from "../../Redux/card";
 
 import Favorite from "../images/Izbranny.svg";
 import { AiOutlineEye } from "react-icons/ai";
@@ -17,6 +19,7 @@ export const ProductView = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const url = `https://server.pandashop.uz/product_test?id=${code}`;
@@ -49,34 +52,9 @@ export const ProductView = () => {
   }, [product]);
 
   const addToCard = (item) => {
-    const card = JSON.parse(localStorage.getItem("card")) || [];
-    const myData = [...card];
-    const size = document.querySelector("#product__size");
-
-    if (!myData.size) {
-      item.size = size.value;
-    }
-
-    if (!myData.length) {
-      myData.push(item);
-      const message = "Продукт был добавлен в корзину";
-      enqueueSnackbar(message, { variant: "success" });
-    } else {
-      const found = myData.find((i) => i.id === item.id);
-      const message = "Товар добавлен в повторный заказ";
-      enqueueSnackbar(message, { variant: "success" });
-      if (!found) {
-        myData.push(item);
-      } else {
-        myData.forEach((i) => {
-          if (i.id === item.id) {
-            i.count += 1;
-          }
-        });
-      }
-    }
-
-    localStorage.setItem("card", JSON.stringify(myData));
+    dispatch(acAddCard(item));
+    const msg = " Этот товар добавление в карзинку";
+    enqueueSnackbar(msg, { variant: "success" });
   };
 
   const addToLike = (item) => {
@@ -148,9 +126,7 @@ export const ProductView = () => {
             <option value="L">L</option>
           </select>
           <div className="btn_box">
-            <button
-              onClick={() => addToCard({ ...product, count: 1, size: {} })}
-            >
+            <button onClick={() => addToCard({ ...product, count: 1 })}>
               В КОРЗИНУ
             </button>
             <button onClick={() => addToLike(product)}>

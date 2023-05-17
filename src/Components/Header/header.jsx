@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./header.css";
 import { NavLink, useLocation, Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import menu_icon from "../Images/menu.svg";
 import search_image from "../Images/search.svg";
@@ -11,6 +12,11 @@ import basket from "../Images/basket.svg";
 export function Header({ search, setSearch }) {
   const location = useLocation().pathname;
   const navigate = useNavigate();
+  const card = useSelector((state) => state.card);
+
+  useEffect(() => {
+    localStorage.setItem("card", JSON.stringify(card));
+  }, [card]);
 
   const handlesearch = (e) => {
     setSearch("");
@@ -18,8 +24,8 @@ export function Header({ search, setSearch }) {
   };
 
   const handleBlur = (e) => {
-    const input = document.querySelector(".input");
     setSearch(false);
+    const input = document.querySelector(".input");
     input.value = "";
   };
 
@@ -53,11 +59,11 @@ export function Header({ search, setSearch }) {
             required
             placeholder="Введите ваш запрос ?"
             style={
-              search || search?.length <= 0 
+              search || search?.length <= 0
                 ? {}
                 : {
                     display: "none",
-                    transform: "translateY:-100%",
+                    transform: "translate: -100%",
                     width: "0px",
                   }
             }
@@ -75,7 +81,10 @@ export function Header({ search, setSearch }) {
         <Link to="/favourite">
           <img src={favourite} alt="" />
         </Link>
-        <Link to="/basket">
+        <Link to="/basket" className="basket">
+          <span style={card.length ? {} : { display: "none" }}>
+            {card.length ? card.length : ""}
+          </span>
           <img src={basket} alt="" />
         </Link>
       </div>

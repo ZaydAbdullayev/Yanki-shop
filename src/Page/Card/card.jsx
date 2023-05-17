@@ -1,56 +1,38 @@
 import React, { useState, useEffect } from "react";
 import "./card.css";
 import Location from "../../Components/Location/location";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NumericFormat } from "react-number-format";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useSnackbar } from "notistack";
+import { useSelector, useDispatch } from "react-redux";
 
 import Empty from "./empty-cart.gif";
+import {
+  acDecrementItem,
+  acDeleteItem,
+  acIncrementItem,
+} from "../../Redux/card";
 
 export const Card = () => {
-  const st = JSON.parse(localStorage.getItem("card")) || [];
-  const [card, setCard] = useState(st);
   const { enqueueSnackbar } = useSnackbar();
   const [total, setTotal] = useState(0);
+  const card = useSelector((state) => state.card);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const myData = [...card];
-
-  const handleDel = (id) => {
-    const result = card.filter((item) => item.id !== id);
+  function handleDel(id) {
+    dispatch(acDeleteItem(id));
     const msg = "Товар удален из корзины!";
     enqueueSnackbar(msg, { variant: "warning" });
-
-    setCard(result);
-    localStorage.setItem("card", JSON.stringify(result));
-  };
+  }
 
   const handleInc = (id) => {
-    myData.map((item) => {
-      if (item.id === id) {
-        item.count += 1;
-      }
-      return item;
-    });
-
-    setCard(myData);
-    localStorage.setItem("card", JSON.stringify(myData));
+    dispatch(acIncrementItem(id));
   };
 
   const handleDec = (id) => {
-    myData.map((item) => {
-      if (item.id === id) {
-        item.count -= 1;
-      }
-
-      if (item.count <= 0) {
-        item.count = 0;
-      }
-      return item;
-    });
-
-    setCard(myData);
-    localStorage.setItem("card", JSON.stringify(myData));
+    dispatch(acDecrementItem(id));
   };
 
   useEffect(() => {
@@ -60,6 +42,10 @@ export const Card = () => {
     });
     setTotal(i);
   }, [card]);
+
+  const viewProduct = (id) => {
+    navigate(`/view/product/${id}`);
+  };
 
   return (
     <div className="card_section">
@@ -76,7 +62,7 @@ export const Card = () => {
         {card.map((item) => {
           return (
             <div className="card_item" key={item.id}>
-              <figure>
+              <figure onClick={() => viewProduct(item.id)}>
                 <img src={item?.img[0]} alt="" />
                 <p>{item.name}</p>
               </figure>

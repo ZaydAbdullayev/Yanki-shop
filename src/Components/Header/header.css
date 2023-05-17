@@ -130,3 +130,22 @@
         margin-right: 40px;
     }
 }
+
+.basket {
+    position: relative;
+}
+
+.basket>span {
+    position: absolute;
+    top: -12px;
+    right: -15px;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: red;
+    color: #fff;
+    font-size: 12px;
+}

@@ -18,7 +18,7 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
   return (
-    <div className="App">
+    <div className="App" style={{ position: "relative" }}>
       <Header search={search} setSearch={setSearch} />
       <Routes>
         <Route index element={<Home />} />

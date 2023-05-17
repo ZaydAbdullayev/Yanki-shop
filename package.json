@@ -2,6 +2,7 @@
   "name": "todo-list",
   "version": "0.1.0",
   "private": true,
+  "author": "zayyad",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",

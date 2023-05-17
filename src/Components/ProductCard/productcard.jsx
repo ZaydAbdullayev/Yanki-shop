@@ -11,7 +11,7 @@ export const ProductCard = memo(({ data }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const addToLike = (item) => {
-    const like = JSON.parse(localStorage.getItem("like")) || [];
+    const like = JSON.parse(localStorage.getItem("like") || "[]");
     const myFavorite = [...like];
     const found = myFavorite.find((i) => i.id === item.id);
 
@@ -24,7 +24,7 @@ export const ProductCard = memo(({ data }) => {
       enqueueSnackbar(message, { variant: "info" });
     }
 
-    localStorage.setItem("like", JSON.stringify(myFavorite));
+    // localStorage.setItem("like", JSON.stringify(myFavorite));
   };
 
   return (
@@ -56,10 +56,7 @@ export const ProductCard = memo(({ data }) => {
                 {item.view}
               </span>
             </figcaption>
-            <button
-              title="Дабавит в тзбранное"
-              onClick={() => addToLike({ ...item, count: 1 })}
-            >
+            <button title="Дабавит в тзбранное" onClick={() => addToLike(item)}>
               <img src={Follow} alt="follow" />
             </button>
           </figure>
