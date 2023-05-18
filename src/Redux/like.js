@@ -7,7 +7,7 @@ export const reLike = (state = like, action) => {
       if (!find) {
         return [...state, action.payload];
       } else {
-        alert("Bu tavar mavjud")
+        // alert("Bu tavar mavjud")
         return state;
       }
 

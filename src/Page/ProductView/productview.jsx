@@ -65,20 +65,16 @@ export const ProductView = () => {
 
   const addToLike = (item) => {
     dispatch(acAddLike(item));
-    // const like = JSON.parse(localStorage.getItem("like")) || [];
-    // const myFavorite = [...like];
-    // const found = myFavorite.find((i) => i.id === item.id);
+    const message = "Товар добавлен в избранное";
+    enqueueSnackbar(message, { variant: "success" });
 
-    // if (!found) {
-    //   myFavorite.push(item);
+    // if (item.id) {
     //   const message = "Товар добавлен в избранное";
     //   enqueueSnackbar(message, { variant: "success" });
     // } else {
     //   const message = "Этот товар уже в избранном";
     //   enqueueSnackbar(message, { variant: "info" });
     // }
-
-    // localStorage.setItem("like", JSON.stringify(myFavorite));
   };
 
   return (
