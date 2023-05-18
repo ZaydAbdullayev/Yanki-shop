@@ -8,6 +8,7 @@ import Loading from "../../Components/Loading/loading";
 import { useSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
 import { acAddCard } from "../../Redux/card";
+import { acAddLike } from "../../Redux/like";
 
 import Favorite from "../images/Izbranny.svg";
 import { AiOutlineEye } from "react-icons/ai";
@@ -63,20 +64,21 @@ export const ProductView = () => {
   };
 
   const addToLike = (item) => {
-    const like = JSON.parse(localStorage.getItem("like")) || [];
-    const myFavorite = [...like];
-    const found = myFavorite.find((i) => i.id === item.id);
+    dispatch(acAddLike(item));
+    // const like = JSON.parse(localStorage.getItem("like")) || [];
+    // const myFavorite = [...like];
+    // const found = myFavorite.find((i) => i.id === item.id);
 
-    if (!found) {
-      myFavorite.push(item);
-      const message = "Товар добавлен в избранное";
-      enqueueSnackbar(message, { variant: "success" });
-    } else {
-      const message = "Этот товар уже в избранном";
-      enqueueSnackbar(message, { variant: "info" });
-    }
+    // if (!found) {
+    //   myFavorite.push(item);
+    //   const message = "Товар добавлен в избранное";
+    //   enqueueSnackbar(message, { variant: "success" });
+    // } else {
+    //   const message = "Этот товар уже в избранном";
+    //   enqueueSnackbar(message, { variant: "info" });
+    // }
 
-    localStorage.setItem("like", JSON.stringify(myFavorite));
+    // localStorage.setItem("like", JSON.stringify(myFavorite));
   };
 
   return (

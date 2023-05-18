@@ -6,13 +6,13 @@ import { NumericFormat } from "react-number-format";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useSnackbar } from "notistack";
 import { useSelector, useDispatch } from "react-redux";
-
-import Empty from "./empty-cart.gif";
 import {
   acDecrementItem,
   acDeleteItem,
   acIncrementItem,
 } from "../../Redux/card";
+
+import Empty from "./empty-cart.gif";
 
 export const Card = () => {
   const { enqueueSnackbar } = useSnackbar();

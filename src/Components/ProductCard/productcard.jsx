@@ -2,6 +2,8 @@ import React, { memo } from "react";
 import "./productcard.css";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { acAddLike } from "../../Redux/like";
+import { useDispatch } from "react-redux";
 
 import Follow from "../Images/follow.svg";
 import { AiOutlineEye } from "react-icons/ai";
@@ -9,21 +11,21 @@ import { AiOutlineEye } from "react-icons/ai";
 export const ProductCard = memo(({ data }) => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
 
   const addToLike = (item) => {
-    const like = JSON.parse(localStorage.getItem("like") || "[]");
-    const myFavorite = [...like];
-    const found = myFavorite.find((i) => i.id === item.id);
-
-    if (!found) {
-      myFavorite.push(item);
-      const message = "Товар добавлен в избранное";
-      enqueueSnackbar(message, { variant: "success" });
-    } else {
-      const message = "Этот товар уже в избранном";
-      enqueueSnackbar(message, { variant: "info" });
-    }
-
+    dispatch(acAddLike(item));
+    // const like = JSON.parse(localStorage.getItem("like") || "[]");
+    // const myFavorite = [...like];
+    // const found = myFavorite.find((i) => i.id === item.id);
+    // if (!found) {
+    //   myFavorite.push(item);
+    const message = "Товар добавлен в избранное";
+    enqueueSnackbar(message, { variant: "success" });
+    // } else {
+    //   const message = "Этот товар уже в избранном";
+    //   enqueueSnackbar(message, { variant: "info" });
+    // }
     // localStorage.setItem("like", JSON.stringify(myFavorite));
   };
 

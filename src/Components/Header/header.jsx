@@ -13,10 +13,15 @@ export function Header({ search, setSearch }) {
   const location = useLocation().pathname;
   const navigate = useNavigate();
   const card = useSelector((state) => state.card);
+  const like = useSelector((state) => state.like);
 
   useEffect(() => {
     localStorage.setItem("card", JSON.stringify(card));
   }, [card]);
+
+  useEffect(() => {
+    localStorage.setItem("like", JSON.stringify(like));
+  }, [like]);
 
   const handlesearch = (e) => {
     setSearch("");
