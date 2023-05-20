@@ -20,6 +20,8 @@ export const Card = () => {
   const card = useSelector((state) => state.card);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [delivery, setDelivery] = useState(0);
+  const [bonus, setBonus] = useState(0);
 
   function handleDel(id) {
     dispatch(acDeleteItem(id));
@@ -41,7 +43,7 @@ export const Card = () => {
 
   useEffect(() => {
     let i = 0;
-    card.forEach((item) => {
+    card?.forEach((item) => {
       i += item.price * item.count;
     });
     setTotal(i);
@@ -49,6 +51,21 @@ export const Card = () => {
 
   const viewProduct = (id) => {
     navigate(`/view/product/${id}`);
+  };
+
+  const handleOrder = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const value = Object.fromEntries(formData.entries());
+    console.log(value);
+  };
+
+  const handleMail = (e) => {
+    setDelivery(e.target.value);
+  };
+
+  const useBonus = (e) => {
+    setBonus(e.target.value);
   };
 
   return (
@@ -67,7 +84,7 @@ export const Card = () => {
           return (
             <div className="card_item" key={item.id}>
               <figure onClick={() => viewProduct(item.id)}>
-                <img src={item?.img[0]} alt="" />
+                <img src={item.img[0]} alt="" />
                 <p>{item.name}</p>
               </figure>
               <p>{item.season || "All"}</p>
@@ -128,7 +145,10 @@ export const Card = () => {
       </div>
 
       {/* ========== Cart container  for personal information ======= */}
-      <form className={card.length ? "book_container" : "book_container_close"}>
+      <form
+        className={card.length ? "book_container" : "book_container_close"}
+        onSubmit={handleOrder}
+      >
         <h3>Оформление заказа</h3>
 
         {/* ========== left section for book container ========= */}
@@ -138,24 +158,28 @@ export const Card = () => {
             <input
               type="text"
               placeholder="Ваше имя*"
+              name="fname"
               required
               autoComplete="off"
             />
             <input
               type="text"
               placeholder="Ваша фамилия*"
+              name="lname"
               required
               autoComplete="off"
             />
             <input
               type="email"
               placeholder="Ваш e-mail*"
+              name="email"
               required
               autoComplete="off"
             />
             <input
-              type="number"
+              type="tel"
               placeholder="Ваш телефон*"
+              name="tel"
               required
               autoComplete="off"
             />
@@ -165,25 +189,46 @@ export const Card = () => {
             <p>Способ доставки:</p>
             <div className="delivery_item">
               <p>По Украине:</p>
-              <label htmlFor="">
-                <input type="radio" name="change" />
+              <label>
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="0"
+                  checked
+                  onChange={handleMail}
+                />
                 <span>
                   Самовывоз - вул. Большая Васильковская 14(м. Льва Толстого)
                 </span>
               </label>
-              <label htmlFor="">
-                <input type="radio" name="change" />
+              <label>
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="0"
+                  onChange={handleMail}
+                />
                 <span>Новая Почта</span>
               </label>
             </div>
             <div className="delivery_item">
               <p>Международная доставка:</p>
-              <label htmlFor="">
-                <input type="radio" name="date" />
+              <label>
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="350"
+                  onChange={handleMail}
+                />
                 <span>Украпочта / 1-3 недели / 30$</span>
               </label>
-              <label htmlFor="">
-                <input type="radio" name="date" />
+              <label>
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="700"
+                  onChange={handleMail}
+                />
                 <span>DHL / 3-7 дней / 60$</span>
               </label>
             </div>
@@ -195,12 +240,14 @@ export const Card = () => {
             <input
               type="text"
               placeholder="Город*"
+              name="country"
               required
               autoComplete="off"
             />
             <input
               type="text"
               placeholder="Отделение почты*"
+              name="mail"
               required
               autoComplete="off"
             />
@@ -210,16 +257,16 @@ export const Card = () => {
             <p>
               Вы можете оплатить покупку одним из ниже перечисленных способов:
             </p>
-            <label htmlFor="">
-              <input type="radio" name="pay" />
+            <label>
+              <input type="radio" name="pay" value="Приват 24" checked />
               <span>Полная предоплата через Приват 24</span>
             </label>
-            <label htmlFor="">
-              <input type="radio" name="pay" />
+            <label>
+              <input type="radio" name="pay" value="Денежным" />
               <span>Денежным переводом Visa/MasterCard</span>
             </label>
-            <label htmlFor="">
-              <input type="radio" name="pay" />
+            <label>
+              <input type="radio" name="pay" value="Новой Почты" />
               <span>Наложенным платежом в отделении Новой Почты</span>
             </label>
           </div>
@@ -228,9 +275,10 @@ export const Card = () => {
           <div className="personal_info">
             <p>Использование бонусного счёта:</p>
             <input
-              type="text"
+              type="number"
               placeholder="Сумма списания бонусов*"
               style={{ width: "100%" }}
+              onChange={useBonus}
             />
           </div>
         </div>
@@ -250,7 +298,7 @@ export const Card = () => {
             <p>
               БОНУСЫ:{" "}
               <NumericFormat
-                value={0}
+                value={bonus}
                 displayType="text"
                 thousandSeparator=" "
                 suffix=" sum"
@@ -259,7 +307,7 @@ export const Card = () => {
             <p>
               ИТОГО:{" "}
               <NumericFormat
-                value={total || 0}
+                value={total + Math.floor(delivery) - Math.floor(bonus) || 0}
                 displayType="text"
                 thousandSeparator=" "
                 suffix=" sum"

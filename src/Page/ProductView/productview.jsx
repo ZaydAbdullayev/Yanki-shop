@@ -58,7 +58,7 @@ export const ProductView = () => {
     const msg = " Этот товар добавление в карзинку";
     enqueueSnackbar(msg, { variant: "success" });
 
-    if (!item.size) {
+    if (item.size) {
       item.size = size.value;
     }
   };
@@ -67,14 +67,6 @@ export const ProductView = () => {
     dispatch(acAddLike(item));
     const message = "Товар добавлен в избранное";
     enqueueSnackbar(message, { variant: "success" });
-
-    // if (item.id) {
-    //   const message = "Товар добавлен в избранное";
-    //   enqueueSnackbar(message, { variant: "success" });
-    // } else {
-    //   const message = "Этот товар уже в избранном";
-    //   enqueueSnackbar(message, { variant: "info" });
-    // }
   };
 
   return (
