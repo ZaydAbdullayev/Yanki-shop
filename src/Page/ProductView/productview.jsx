@@ -141,7 +141,7 @@ export const ProductView = () => {
               corrupti deleniti quas quidem! Fugiat.
             </p>
           </details>
-          <details class=" about_product">
+          <details className="about_product">
             <summary>
               Состав и уход
               <span>∨</span>

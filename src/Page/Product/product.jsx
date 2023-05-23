@@ -63,7 +63,7 @@ export function Product({ search }) {
       <div className="product_container">
         <div className="product_filter">
           <h3>Каталог</h3>
-
+          
           {catalog.map((item, index) => {
             return (
               <Link to={`/product?q=${item.query}`} key={index}>

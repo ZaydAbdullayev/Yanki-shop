@@ -298,7 +298,7 @@ export const Card = () => {
             <p>
               БОНУСЫ:{" "}
               <NumericFormat
-                value={bonus}
+                value={-bonus}
                 displayType="text"
                 thousandSeparator=" "
                 suffix=" sum"
