@@ -15,23 +15,13 @@ export const ProductCard = memo(({ data }) => {
 
   const addToLike = (item) => {
     dispatch(acAddLike(item));
-    // const like = JSON.parse(localStorage.getItem("like") || "[]");
-    // const myFavorite = [...like];
-    // const found = myFavorite.find((i) => i.id === item.id);
-    // if (!found) {
-    //   myFavorite.push(item);
     const message = "Товар добавлен в избранное";
     enqueueSnackbar(message, { variant: "success" });
-    // } else {
-    //   const message = "Этот товар уже в избранном";
-    //   enqueueSnackbar(message, { variant: "info" });
-    // }
-    // localStorage.setItem("like", JSON.stringify(myFavorite));
   };
 
   return (
     <>
-      {data.map((item, index) => {
+      {data.map((item) => {
         const img = JSON?.parse(item.images || "[]");
         return (
           <figure className="product_card" key={item.id}>
